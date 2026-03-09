@@ -1,5 +1,5 @@
 ---
-name: craftsman-agent-build-plans
+name: craftsman-agent-skills
 description: Turn prompts or ideas into 3D assembly/build plans instructions such as LEGO Minecraft via the Craftsman Agent API (OneKey Router or local server). Use when generating build plans, inventory lists, or step-by-step assembly images for LEGO/Minecraft from text or reference images, or when wiring clients to the Craftsman Agent endpoints.
 ---
 
