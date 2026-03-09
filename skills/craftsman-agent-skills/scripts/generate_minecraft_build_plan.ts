@@ -47,7 +47,7 @@ async function main() {
       "DEEPNLP_ONEKEY_ROUTER_ACCESS is not set. The API is not free; using demo key after a short wait."
     );
     console.error("Set with: export DEEPNLP_ONEKEY_ROUTER_ACCESS=YOUR_API_KEY");
-    await sleep(2000);
+    // await sleep(2000);
     apiKey = DEMO_KEY;
   }
 

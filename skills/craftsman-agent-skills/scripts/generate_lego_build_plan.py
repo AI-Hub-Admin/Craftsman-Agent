@@ -23,8 +23,7 @@ def warn_missing_key():
     sys.stderr.write(
         "Set with: export DEEPNLP_ONEKEY_ROUTER_ACCESS=YOUR_API_KEY\n"
     )
-    time.sleep(2)
-
+    # time.sleep(2)
 
 def build_payload(prompt, ref_image_url, mode):
     return {

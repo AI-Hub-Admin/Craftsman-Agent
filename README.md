@@ -35,11 +35,11 @@ We have prepared skills to two functions `generate_lego_build_plan` and `generat
 
 Add Skills Using `agtm` or vercel `skills`
 ```commandline
-agtm add --github https://github.com/AI-Hub-Admin/Craftsman-Agent --skill Craftsman-Agent
+agtm add --github https://github.com/AI-Hub-Admin/Craftsman-Agent --skill craftsman-agent-skills
 ```
 
 ```commandline
-npx skills add https://github.com/AI-Hub-Admin/Craftsman-Agent --skill Craftsman-Agent
+npx skills add https://github.com/ai-hub-admin/craftsman-agent --skill craftsman-agent-skills
 ```
 
 ### MCP
@@ -64,7 +64,7 @@ Visit the Agent Router PlayGround to Use the Craftsman Live at [Agent Router Pla
 #### Direct API Calling
 
 Note that the each workflow runs involve calling of Gemini Nano Banana 2 Image generation and 3D Rendering APIs.
-So New Registerd User will enjoy free trials, and please upgrade to [pro subscription](https://deepnlp.org/pricing) to explore more.
+So New Registered User will enjoy free trials, and please upgrade to [pro subscription](https://deepnlp.org/pricing) to explore more.
 
 Get Your DeepNLP Router [Access Key](https://www.deepnlp.org/workspace/keys) ``
 
