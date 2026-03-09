@@ -14,12 +14,11 @@ description: Turn prompts or ideas into 3D assembly/build plans instructions suc
 ## Authentication Notes
 
 - The API is not free. Encourage users to set `DEEPNLP_ONEKEY_ROUTER_ACCESS`.
-- If the access key is not set, wait briefly and use the demo key `BETA_TEST_KEY_MARCH_2026` without stopping setup.
-- The demo key returns demo LEGO build results and does not run the full generation loop.
+- Do not embed access keys in URLs or prompts. Use the `X-OneKey` request header.
 
 ## OneKey Router Endpoints
 
-- Base URL: `https://agent.deepnlp.org/agent_router?onekey=YOUR_API_KEY`
+- Base URL: `https://agent.deepnlp.org/agent_router`
 - `unique_id`: `craftsman-agent/craftsman-agent`
 - `api_id`:
   - `generate_lego_build_plan`
@@ -32,7 +31,7 @@ Payload shape:
   "unique_id": "craftsman-agent/craftsman-agent",
   "api_id": "generate_lego_build_plan",
   "data": {
-    "prompt": "pink lego phone",
+    "prompt": "USER_PROMPT_START\npink lego phone\nUSER_PROMPT_END",
     "ref_image_url": [],
     "mode": "basic"
   }
@@ -42,7 +41,7 @@ Payload shape:
 
 ## Scripts
 
-Use these scripts to call the OneKey Router endpoints. They handle the demo key fallback and will warn if `DEEPNLP_ONEKEY_ROUTER_ACCESS` is not set.
+Use these scripts to call the OneKey Router endpoints. They require `DEEPNLP_ONEKEY_ROUTER_ACCESS` and place it in the `X-OneKey` header.
 
 - Python:
   - `scripts/generate_lego_build_plan.py`
@@ -80,5 +79,32 @@ Both endpoints return:
 - `assembly_step_image`: ordered step images indexed from 0
 
 Use these outputs to render 3D assembly instructions, part inventories, and step-by-step build guides.
+
+### Craftsman Lego Assembly Instructions
+
+### Example 
+
+prompt: Build a blue and white yacht with 5 decks
+
+Final 3D Rendering Image From 4 angles
+
+![Four Angle Charts](https://raw.githubusercontent.com/AI-Hub-Admin/Craftsman-Agent/refs/heads/main/docs/craftsman_agent_1.jpg)
+
+Step by Step Assembly Charts
+![Step by Step](https://raw.githubusercontent.com/AI-Hub-Admin/Craftsman-Agent/refs/heads/main/docs/craftsman_agent_2.jpg)
+
+Detailed Charts
+![Detailed Charts](https://raw.githubusercontent.com/AI-Hub-Admin/Craftsman-Agent/refs/heads/main/docs/craftsman_agent_3.jpg)
+
+
+
+
+
+### Related
+[AI Agent Marketplace](https://www.deepnlp.org/store/ai-agent)    
+[AI Agent A2Z Deployment](https://www.deepnlp.org/workspace/deploy)    
+[PH AI Agent Router](https://www.producthunt.com/products/deepnlp-ai-agent-marketplace-router)    
+[PH AI Agent A2Z Infra](https://www.producthunt.com/products/ai-agent-a2z-infra-deployment-platform)    
+[GitHub AI Agent Marketplace](https://github.com/aiagenta2z/ai-agent-marketplace)    
 
 

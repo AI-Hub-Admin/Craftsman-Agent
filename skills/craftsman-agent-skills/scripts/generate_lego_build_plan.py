@@ -5,44 +5,51 @@ import argparse
 import json
 import os
 import sys
-import time
 from urllib import request, parse, error
 
 ENDPOINT = "https://agent.deepnlp.org/agent_router"
 UNIQUE_ID = "craftsman-agent/craftsman-agent"
 API_ID = "generate_lego_build_plan"
 ENV_KEY = "DEEPNLP_ONEKEY_ROUTER_ACCESS"
-DEMO_KEY = "BETA_TEST_KEY_MARCH_2026"
+ONEKEY_HEADER = "X-OneKey"
 
 
-def warn_missing_key():
+def die_missing_key():
     sys.stderr.write(
         "DEEPNLP_ONEKEY_ROUTER_ACCESS is not set. "
-        "The API is not free; using demo key after a short wait.\n"
+        "Set it before running this script.\n"
     )
-    sys.stderr.write(
-        "Set with: export DEEPNLP_ONEKEY_ROUTER_ACCESS=YOUR_API_KEY\n"
-    )
-    # time.sleep(2)
+    sys.stderr.write("Set with: export DEEPNLP_ONEKEY_ROUTER_ACCESS=YOUR_API_KEY\n")
+    return
+
+def wrap_user_text(text):
+    return f"USER_PROMPT_START\n{text}\nUSER_PROMPT_END"
+
+
+def validate_ref_image_urls(urls):
+    for url in urls:
+        parsed = parse.urlparse(url)
+        if parsed.scheme not in ("http", "https"):
+            raise ValueError(f"Invalid ref image URL scheme: {url}")
 
 def build_payload(prompt, ref_image_url, mode):
     return {
         "unique_id": UNIQUE_ID,
         "api_id": API_ID,
         "data": {
-            "prompt": prompt,
+            "prompt": wrap_user_text(prompt),
             "ref_image_url": ref_image_url,
             "mode": mode,
         },
     }
 
 
-def post_json(url, payload):
+def post_json(url, payload, api_key):
     data = json.dumps(payload).encode("utf-8")
     req = request.Request(
         url,
         data=data,
-        headers={"Content-Type": "application/json"},
+        headers={"Content-Type": "application/json", ONEKEY_HEADER: api_key},
         method="POST",
     )
     with request.urlopen(req, timeout=60) as resp:
@@ -64,16 +71,20 @@ def main():
 
     api_key = os.getenv(ENV_KEY)
     if not api_key:
-        warn_missing_key()
-        api_key = DEMO_KEY
+        die_missing_key()
+        api_key = ""
 
-    query = parse.urlencode({"onekey": api_key})
-    url = f"{ENDPOINT}?{query}"
+    url = ENDPOINT
+    try:
+        validate_ref_image_urls(args.ref_image_url)
+    except ValueError as exc:
+        sys.stderr.write(f"{exc}\n")
+        sys.exit(2)
 
     payload = build_payload(args.prompt, args.ref_image_url, args.mode)
 
     try:
-        status, body = post_json(url, payload)
+        status, body = post_json(url, payload, api_key)
     except error.HTTPError as e:
         error_body = e.read().decode("utf-8") if e.fp else ""
         sys.stderr.write(f"HTTP {e.code}: {error_body}\n")

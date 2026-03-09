@@ -4,10 +4,23 @@ const ENDPOINT = "https://agent.deepnlp.org/agent_router";
 const UNIQUE_ID = "craftsman-agent/craftsman-agent";
 const API_ID = "generate_minecraft_build_plan";
 const ENV_KEY = "DEEPNLP_ONEKEY_ROUTER_ACCESS";
-const DEMO_KEY = "BETA_TEST_KEY_MARCH_2026";
+const ONEKEY_HEADER = "X-OneKey";
 
-function sleep(ms: number): Promise<void> {
-  return new Promise((resolve) => setTimeout(resolve, ms));
+function wrapUserText(text: string): string {
+  return `USER_PROMPT_START\n${text}\nUSER_PROMPT_END`;
+}
+
+function validateRefImageUrls(urls: string[]) {
+  for (const url of urls) {
+    try {
+      const parsed = new URL(url);
+      if (parsed.protocol !== "http:" && parsed.protocol !== "https:") {
+        throw new Error(`Invalid ref image URL scheme: ${url}`);
+      }
+    } catch (err) {
+      throw new Error(`Invalid ref image URL: ${url}`);
+    }
+  }
 }
 
 function parseArgs(argv: string[]) {
@@ -43,22 +56,20 @@ async function main() {
 
   let apiKey = process.env[ENV_KEY];
   if (!apiKey) {
-    console.error(
-      "DEEPNLP_ONEKEY_ROUTER_ACCESS is not set. The API is not free; using demo key after a short wait."
-    );
+    console.error("DEEPNLP_ONEKEY_ROUTER_ACCESS is not set. Set it before running.");
     console.error("Set with: export DEEPNLP_ONEKEY_ROUTER_ACCESS=YOUR_API_KEY");
-    // await sleep(2000);
-    apiKey = DEMO_KEY;
+    // process.exit(2);
+    apiKey = "";
   }
 
   const url = new URL(ENDPOINT);
-  url.searchParams.set("onekey", apiKey);
+  validateRefImageUrls(refImageUrl);
 
   const payload = {
     unique_id: UNIQUE_ID,
     api_id: API_ID,
     data: {
-      prompt,
+      prompt: wrapUserText(prompt),
       ref_image_url: refImageUrl,
       mode,
     },
@@ -66,7 +77,7 @@ async function main() {
 
   const response = await fetch(url.toString(), {
     method: "POST",
-    headers: { "Content-Type": "application/json" },
+    headers: { "Content-Type": "application/json", [ONEKEY_HEADER]: apiKey },
     body: JSON.stringify(payload),
   });
 

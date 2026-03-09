@@ -1,5 +1,5 @@
 ## Craftsman-Agent
-[GitHub]() | [Open Source AI Agent Marketplace DeepNLP](https://www.deepnlp.org/store/ai-agent)|[Agent RL Dataset](https://www.deepnlp.org/store/dataset) | [Deploy & Live URL](https://deepnlp.org/doc/agent_mcp_deployment) | [ProductHunt](https://www.producthunt.com/products/craftsman-agent?launch=craftsman-agent)
+[AI Agent Marketplace GitHub](https://github.com/aiagenta2z/ai-agent-marketplace) | [Craftsman Agent Github](https://github.com/AI-Hub-Admin/Craftsman-Agent) | [Open Source AI Agent Marketplace DeepNLP](https://www.deepnlp.org/store/ai-agent)|[Agent RL Dataset](https://www.deepnlp.org/store/dataset) | [Deploy & Live URL](https://deepnlp.org/doc/agent_mcp_deployment) | [ProductHunt](https://www.producthunt.com/products/craftsman-agent?launch=craftsman-agent)
 
 <img src="https://static.aiagenta2z.com/scripts/img/comment/80e65ff34838c544f9560047f34a3834.jpg" alt="Craftsman" width="48" height="48" /> Craftsman Agent is an AI assistant that transforms your text prompts into 3D build instructions — creating things from LEGO sets and Minecraft worlds to figurines and modular designs. Get detailed, step-by-step assembly charts and bring your ideas to life, faster and smarter than ever.
 Now Supported Skills, MCP and Use in Agent Router Playground to turn your creative ideas to a 3D build instruction plans.
@@ -68,30 +68,23 @@ So New Registered User will enjoy free trials, and please upgrade to [pro subscr
 
 Get Your DeepNLP Router [Access Key](https://www.deepnlp.org/workspace/keys) ``
 
+Use Demo Key for Illustration Purpose 
+
+```shell
+export DEEPNLP_ONEKEY_ROUTER_ACCESS=BETA_TEST_KEY_MARCH_2026
 ```
-curl -X POST "https://agent.deepnlp.org/agent?onekey={your_access_key}" \
+
+```
+export DEEPNLP_ONEKEY_ROUTER_ACCESS=YOUR_ACCESS_KEY
+
+curl -X POST "https://agent.deepnlp.org/agent" \
+-H "X-OneKey: $DEEPNLP_ONEKEY_ROUTER_ACCESS" \
 -H "Content-Type: application/json" \
 -d '{
   "unique_id": "craftsman-agent/craftsman-agent",
   "api_id": "generate_lego_build_plan",
   "data": {
-    "prompt": "pink lego phone",
-    "ref_image_url": [],
-    "mode": "basic"
-  }
-}'
-```
-
-And you can use the beta key for demo illustration purpose 
-
-```
-curl -X POST "https://agent.deepnlp.org/agent?onekey=BETA_TEST_KEY_MARCH_2026" \
--H "Content-Type: application/json" \
--d '{
-  "unique_id": "craftsman-agent/craftsman-agent",
-  "api_id": "generate_lego_build_plan",
-  "data": {
-    "prompt": "Generate a blue and white yacht for 5 decks",
+    "prompt": "USER_PROMPT_START\npink lego phone\nUSER_PROMPT_END",
     "ref_image_url": [],
     "mode": "basic"
   }
@@ -117,5 +110,4 @@ Step Decomposition/ Exploded View Rendering / Annotation /  Export/Publish/  Inv
 [PH AI Agent Router](https://www.producthunt.com/products/deepnlp-ai-agent-marketplace-router)    
 [PH AI Agent A2Z Infra](https://www.producthunt.com/products/ai-agent-a2z-infra-deployment-platform)    
 [GitHub AI Agent Marketplace](https://github.com/aiagenta2z/ai-agent-marketplace)    
-
 
