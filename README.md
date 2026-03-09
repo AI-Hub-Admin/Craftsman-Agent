@@ -77,7 +77,7 @@ export DEEPNLP_ONEKEY_ROUTER_ACCESS=BETA_TEST_KEY_MARCH_2026
 ```
 export DEEPNLP_ONEKEY_ROUTER_ACCESS=YOUR_ACCESS_KEY
 
-curl -X POST "https://agent.deepnlp.org/agent" \
+curl -X POST "https://agent.deepnlp.org/agent_router" \
 -H "X-OneKey: $DEEPNLP_ONEKEY_ROUTER_ACCESS" \
 -H "Content-Type: application/json" \
 -d '{
