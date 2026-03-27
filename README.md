@@ -20,6 +20,13 @@ Step by Step Assembly Charts
 Detailed Charts
 ![Detailed Charts](https://raw.githubusercontent.com/AI-Hub-Admin/Craftsman-Agent/refs/heads/main/docs/craftsman_agent_3.jpg)
 
+Minecraft Generation 3D Build Scene
+![minecraft_scene](https://raw.githubusercontent.com/AI-Hub-Admin/Craftsman-Agent/refs/heads/main/docs/minecraft_scene.png)
+
+
+Tesla Car Wraps Generation Works for Various Models
+![Detailed Charts](https://raw.githubusercontent.com/AI-Hub-Admin/Craftsman-Agent/refs/heads/main/docs/tesla_car_wraps.jpg)
+
 
 ## Usage
 
@@ -27,10 +34,11 @@ Detailed Charts
 
 We have prepared skills to two functions `generate_lego_build_plan` and `generate_minecraft_build_plan` in both typescript and python.
 
-| function | description |
-| --- | ---- |
-| generate_lego_build_plan | Call Craftsman Agent OneKey Router to generate a LEGO build plan. |
-| generate_minecraft_build_plan | Call Craftsman Agent OneKey Router to generate a Minecraft build plan. |
+| function | Supported             | description                                                                                                         |
+| --- |-----------------------|---------------------------------------------------------------------------------------------------------------------|
+| generate_lego_build_plan | API, Skills, CLI, MCP | Call Craftsman Agent API OneKey Router to generate a LEGO 3D step-by-step instruction build plan.                   |
+| generate_minecraft_build_plan | API, Skills, CLI, MCP      | Call Craftsman Agent API OneKey Router to generate a Minecraft 3D scene build plan.                                 |
+| generate_tesla_wraps | API, Skills, CLI, MCP      | Call Craftsman Agent API OneKey Router to generate tesla Car Wrap Images and Paints that will display on 3D screen. |
 
 
 Add Skills Using `agtm` or vercel `skills`
@@ -63,6 +71,10 @@ Visit the Agent Router PlayGround to Use the Craftsman Live at [Agent Router Pla
 
 #### Direct API Calling
 
+#### 1. Generate Lego Build Plan
+
+generate_lego_build_plan
+
 Note that the each workflow runs involve calling of Gemini Nano Banana 2 Image generation and 3D Rendering APIs.
 So New Registered User will enjoy free trials, and please upgrade to [pro subscription](https://deepnlp.org/pricing) to explore more.
 
@@ -84,15 +96,98 @@ curl -X POST "https://agent.deepnlp.org/agent_router" \
   "unique_id": "craftsman-agent/craftsman-agent",
   "api_id": "generate_lego_build_plan",
   "data": {
-    "prompt": "USER_PROMPT_START\npink lego phone\nUSER_PROMPT_END",
-    "ref_image_url": [],
+    "prompt": "Blue and White Yacht for 5 decks",
+    "images": [],
     "mode": "basic"
   }
 }'
 ```
 
+CLI
+
+Remember to set timeout (mill seconds) to 30000 for image generation API.
+
+```shell
+onekey agent <unique_id> <api_id> $JSON --timeout 30000
+```
+
+```shell
+onekey agent craftsman-agent/craftsman-agent generate_lego_build_plan '{"prompt":"pink lego phone","ref_image_url":[],"mode":"basic"}' --timeout 30000
+```
+
+Result 
 ```
 {"success":true,"inventory_list":[{"color":"bright_blue","size":[1,1,1],"position":[4,0,0]},{"color":"bright_blue","size":[1,1,1],"position":[4,1,0]},{"color":"bright_blue","size":[1,1,1],"position":[4,2,0]},{"color":"bright_blue","size":[1,1,1],"position":[3,3,0]},{"color":"bright_blue","size":[1,1,1],"position":[4,3,0]},{"color":"bright_blue","size":[1,1,1],"position":[5,3,0]},{"color":"bright_blue","size":[1,1,1],"position":[3,4,0]},{"color":"bright_blue","size":[1,1,1],"position":[4,4,0]},{"color":"bright_blue","size":[1,1,1],"position":[5,4,0]},{"color":"bright_blue","size":[1,1,1],"position":[2,5,0]},{"color":"bright_blue","size":[1,1,1],"position":[3,5,0]},{"color":"bright_blue","size":[1,1,1],"position":[4,5,0]},{"color":"bright_blue","size":[1,1,1],"position":[5,5,0]},{"color":"bright_blue","size":[1,1,1],"position":[6,5,0]},{"color":"bright_blue","size":[1,1,1],"position":[2,6,0]},{"color":"bright_blue","size":[1,1,1],"position":[3,6,0]},{"color":"bright_blue","size":[1,1,1],"position":[4,6,0]},{"color":"bright_blue","size":[1,1,1],"position":[5,6,0]},{"color":"bright_blue","size":[1,1,1],"position":[6,6,0]},{"color":"bright_blue","size":[1,1,1],"position":[1,7,0]},{"color":"bright_blue","size":[1,1,1],"position":[2,7,0]},{"color":"bright_blue","size":[1,1,1],"position":[3,7,0]},{"color":"bright_blue","size":[1,1,1],"position":[4,7,0]},{"color":"bright_blue","size":[1,1,1],"position":[5,7,0]},{"color":"bright_blue","size":[1,1,1],"position":[6,7,0]},{"color":"bright_blue","size":[1,1,1],"position":[7,7,0]},{"color":"bright_blue","size":[1,1,1],"position":[1,8,0]},{"color":"bright_blue","size":[1,1,1],"position":[2,8,0]},{"color":"bright_blue","size":[1,1,1],"position":[3,8,0]},{"color":"bright_blue","size":[1,1,1],"position":[4,8,0]},{"color":"bright_blue","size":[1,1,1],"position":[5,8,0]},{"color":"bright_blue","size":[1,1,1],"position":[6,8,0]},{"color":"bright_blue","size":[1,1,1],"position":[7,8,0]},{"color":"bright_blue","size":[1,1,1],"position":[1,9,0]},{"color":"bright_blue","size":[1,1,1],"position":[2,9,0]},{"color":"bright_blue","size":[1,1,1],"position":[3,9,0]},{"color":"bright_blue","size":[1,1,1],"position":[4,9,0]},{"color":"bright_blue","size":[1,1,1],"position":[5,9,0]},{"color":"bright_blue","size":[1,1,1],"position":[6,9,0]},{"color":"bright_blue","size":[1,1,1],"position":[7,9,0]},{"color":"bright_blue","size":[1,1,1],"position":[1,10,0]},{"color":"bright_blue","size":[1,1,1],"position":[2,10,0]},{"color":"bright_blue","size":[1,1,1],"position":[3,10,0]},{"color":"bright_blue","size":[1,1,1],"position":[4,10,0]},{"color":"bright_blue","size":[1,1,1],"position":[5,10,0]},{"color":"bright_blue","size":[1,1,1],"position":[6,10,0]},{"color":"bright_blue","size":[1,1,1],"position":[7,10,0]},{"color":"bright_blue","size":[1,1,1],"position":[1,11,0]},{"color":"bright_blue","size":[1,1,1],"position":[2,11,0]},{"color":"bright_blue","size":[1,1,1],"position":[3,11,0]},{"color":"bright_blue","size":[1,1,1],"position":[4,11,0]},{"color":"bright_blue","size":[1,1,1],"position":[5,11,0]},{"color":"bright_blue","size":[1,1,1],"position":[6,11,0]},{"color":"bright_blue","size":[1,1,1],"position":[7,11,0]},{"color":"bright_blue","size":[1,1,1],"position":[2,12,0]},{"color":"bright_blue","size":[1,1,1],"position":[3,12,0]},{"color":"bright_blue","size":[1,1,1],"position":[4,12,0]},{"color":"bright_blue","size":[1,1,1],"position":[5,12,0]},{"color":"bright_blue","size":[1,1,1],"position":[6,12,0]},{"color":"bright_blue","size":[1,1,1],"position":[2,13,0]},{"color":"bright_blue","size":[1,1,1],"position":[3,13,0]},{"color":"bright_blue","size":[1,1,1],"position":[4,13,0]},{"color":"bright_blue","size":[1,1,1],"position":[5,13,0]},{"color":"bright_blue","size":[1,1,1],"position":[6,13,0]},{"color":"bright_blue","size":[1,1,1],"position":[3,14,0]},{"color":"bright_blue","size":[1,1,1],"position":[4,14,0]},{"color":"bright_blue","size":[1,1,1],"position":[5,14,0]},{"color":"bright_blue","size":[1,1,1],"position":[3,15,0]},{"color":"bright_blue","size":[1,1,1],"position":[4,15,0]},{"color":"bright_blue","size":[1,1,1],"position":[5,15,0]},{"color":"bright_blue","size":[1,1,1],"position":[4,16,0]},{"color":"bright_blue","size":[1,1,1],"position":[4,17,0]},{"color":"bright_red","size":[1,1,1],"position":[4,0,1]},{"color":"bright_red","size":[1,1,1],"position":[4,1,1]},{"color":"bright_red","size":[1,1,1],"position":[3,2,1]},{"color":"bright_red","size":[1,1,1],"position":[4,2,1]},{"color":"bright_red","size":[1,1,1],"position":[5,2,1]},{"color":"bright_red","size":[1,1,1],"position":[3,3,1]},{"color":"bright_red","size":[1,1,1],"position":[4,3,1]},{"color":"bright_red","size":[1,1,1],"position":[5,3,1]},{"color":"bright_red","size":[1,1,1],"position":[2,4,1]},{"color":"bright_red","size":[1,1,1],"position":[3,4,1]},{"color":"bright_red","size":[1,1,1],"position":[4,4,1]},{"color":"bright_red","size":[1,1,1],"position":[5,4,1]},{"color":"bright_red","size":[1,1,1],"position":[6,4,1]},{"color":"bright_red","size":[1,1,1],"position":[2,5,1]},{"color":"bright_red","size":[1,1,1],"position":[3,5,1]},{"color":"bright_red","size":[1,1,1],"position":[4,5,1]},{"color":"bright_red","size":[1,1,1],"position":[5,5,1]},{"color":"bright_red","size":[1,1,1],"position":[6,5,1]},{"color":"bright_red","size":[1,1,1],"position":[1,6,1]},{"color":"bright_red","size":[1,1,1],"position":[2,6,1]},{"color":"bright_red","size":[1,1,1],"position":[3,6,1]},{"color":"bright_red","size":[1,1,1],"position":[4,6,1]},{"color":"bright_red","size":[1,1,1],"position":[5,6,1]},{"color":"bright_red","size":[1,1,1],"position":[6,6,1]},{"color":"bright_red","size":[1,1,1],"position":[7,6,1]},{"color":"bright_red","size":[1,1,1],"position":[1,7,1]},{"color":"bright_red","size":[1,1,1],"position":[2,7,1]},{"color":"bright_red","size":[1,1,1],"position":[3,7,1]},{"color":"bright_red","size":[1,1,1],"position":[4,7,1]},{"color":"bright_red","size":[1,1,1],"position":[5,7,1]},{"color":"bright_red","size":[1,1,1],"position":[6,7,1]},{"color":"bright_red","size":[1,1,1],"position":[7,7,1]},{"color":"bright_red","size":[1,1,1],"position":[0,8,1]},{"color":"bright_red","size":[1,1,1],"position":[1,8,1]},{"color":"bright_red","size":[1,1,1],"position":[2,8,1]},{"color":"bright_red","size":[1,1,1],"position":[3,8,1]},{"color":"bright_red","size":[1,1,1],"position":[4,8,1]},{"color":"bright_red","size":[1,1,1],"position":[5,8,1]},{"color":"bright_red","size":[1,1,1],"position":[6,8,1]},{"color":"bright_red","size":[1,1,1],"position":[7,8,1]},{"color":"bright_red","size":[1,1,1],"position":[8,8,1]},{"color":"bright_red","size":[1,1,1],"position":[0,9,1]},{"color":"bright_red","size":[1,1,1],"position":[1,9,1]},{"color":"bright_red","size":[1,1,1],"position":[2,9,1]},{"color":"bright_red","size":[1,1,1],"position":[3,9,1]},{"color":"bright_red","size":[1,1,1],"position":[4,9,1]},{"color":"bright_red","size":[1,1,1],"position":[5,9,1]},{"color":"bright_red","size":[1,1,1],"position":[6,9,1]},{"color":"bright_red","size":[1,1,1],"position":[7,9,1]},{"color":"bright_red","size":[1,1,1],"position":[8,9,1]},{"color":"bright_red","size":[1,1,1],"position":[0,10,1]},{"color":"bright_red","size":[1,1,1],"position":[1,10,1]},{"color":"bright_red","size":[1,1,1],"position":[2,10,1]},{"color":"bright_red","size":[1,1,1],"position":[3,10,1]},{"color":"bright_red","size":[1,1,1],"position":[4,10,1]},{"color":"bright_red","size":[1,1,1],"position":[5,10,1]},{"color":"bright_red","size":[1,1,1],"position":[6,10,1]},{"color":"bright_red","size":[1,1,1],"position":[7,10,1]},{"color":"bright_red","size":[1,1,1],"position":[8,10,1]},{"color":"bright_red","size":[1,1,1],"position":[1,11,1]},{"color":"bright_red","size":[1,1,1],"position":[2,11,1]},{"color":"bright_red","size":[1,1,1],"position":[3,11,1]},{"color":"bright_red","size":[1,1,1],"position":[4,11,1]},{"color":"bright_red","size":[1,1,1],"position":[5,11,1]},{"color":"bright_red","size":[1,1,1],"position":[6,11,1]},{"color":"bright_red","size":[1,1,1],"position":[7,11,1]},{"color":"bright_red","size":[1,1,1],"position":[1,12,1]},{"color":"bright_red","size":[1,1,1],"position":[2,12,1]},{"color":"bright_red","size":[1,1,1],"position":[3,12,1]},{"color":"bright_red","size":[1,1,1],"position":[4,12,1]},{"color":"bright_red","size":[1,1,1],"position":[5,12,1]},{"color":"bright_red","size":[1,1,1],"position":[6,12,1]},{"color":"bright_red","size":[1,1,1],"position":[7,12,1]},{"color":"bright_red","size":[1,1,1],"position":[2,13,1]},{"color":"bright_red","size":[1,1,1],"position":[3,13,1]},{"color":"bright_red","size":[1,1,1],"position":[4,13,1]},{"color":"bright_red","size":[1,1,1],"position":[5,13,1]},{"color":"bright_red","size":[1,1,1],"position":[6,13,1]},{"color":"bright_red","size":[1,1,1],"position":[2,14,1]},{"color":"bright_red","size":[1,1,1],"position":[3,14,1]},{"color":"bright_red","size":[1,1,1],"position":[4,14,1]},{"color":"bright_red","size":[1,1,1],"position":[5,14,1]},{"color":"bright_red","size":[1,1,1],"position":[6,14,1]},{"color":"bright_red","size":[1,1,1],"position":[3,15,1]},{"color":"bright_red","size":[1,1,1],"position":[4,15,1]},{"color":"bright_red","size":[1,1,1],"position":[5,15,1]},{"color":"bright_red","size":[1,1,1],"position":[3,16,1]},{"color":"bright_red","size":[1,1,1],"position":[4,16,1]},{"color":"bright_red","size":[1,1,1],"position":[5,16,1]},{"color":"bright_red","size":[1,1,1],"position":[4,17,1]},{"color":"trans_blue","size":[1,1,1],"position":[3,4,2]},{"color":"trans_blue","size":[1,1,1],"position":[4,4,2]},{"color":"trans_blue","size":[1,1,1],"position":[5,4,2]},{"color":"trans_blue","size":[1,1,1],"position":[3,5,2]},{"color":"trans_blue","size":[1,1,1],"position":[4,5,2]},{"color":"trans_blue","size":[1,1,1],"position":[5,5,2]},{"color":"trans_blue","size":[1,1,1],"position":[3,6,2]},{"color":"trans_blue","size":[1,1,1],"position":[4,6,2]},{"color":"trans_blue","size":[1,1,1],"position":[5,6,2]},{"color":"trans_blue","size":[1,1,1],"position":[2,7,2]},{"color":"trans_blue","size":[1,1,1],"position":[3,7,2]},{"color":"trans_blue","size":[1,1,1],"position":[4,7,2]},{"color":"trans_blue","size":[1,1,1],"position":[5,7,2]},{"color":"trans_blue","size":[1,1,1],"position":[6,7,2]},{"color":"trans_blue","size":[1,1,1],"position":[2,8,2]},{"color":"trans_blue","size":[1,1,1],"position":[3,8,2]},{"color":"trans_blue","size":[1,1,1],"position":[4,8,2]},{"color":"trans_blue","size":[1,1,1],"position":[5,8,2]},{"color":"trans_blue","size":[1,1,1],"position":[6,8,2]},{"color":"trans_blue","size":[1,1,1],"position":[2,9,2]},{"color":"trans_blue","size":[1,1,1],"position":[3,9,2]},{"color":"trans_blue","size":[1,1,1],"position":[4,9,2]},{"color":"trans_blue","size":[1,1,1],"position":[5,9,2]},{"color":"trans_blue","size":[1,1,1],"position":[6,9,2]},{"color":"trans_blue","size":[1,1,1],"position":[2,10,2]},{"color":"trans_blue","size":[1,1,1],"position":[3,10,2]},{"color":"trans_blue","size":[1,1,1],"position":[4,10,2]},{"color":"trans_blue","size":[1,1,1],"position":[5,10,2]},{"color":"trans_blue","size":[1,1,1],"position":[6,10,2]},{"color":"trans_blue","size":[1,1,1],"position":[2,11,2]},{"color":"trans_blue","size":[1,1,1],"position":[3,11,2]},{"color":"trans_blue","size":[1,1,1],"position":[4,11,2]},{"color":"trans_blue","size":[1,1,1],"position":[5,11,2]},{"color":"trans_blue","size":[1,1,1],"position":[6,11,2]},{"color":"trans_blue","size":[1,1,1],"position":[3,12,2]},{"color":"trans_blue","size":[1,1,1],"position":[4,12,2]},{"color":"trans_blue","size":[1,1,1],"position":[5,12,2]},{"color":"trans_blue","size":[1,1,1],"position":[3,13,2]},{"color":"trans_blue","size":[1,1,1],"position":[4,13,2]},{"color":"trans_blue","size":[1,1,1],"position":[5,13,2]},{"color":"trans_blue","size":[1,1,1],"position":[2,5,3]},{"color":"trans_blue","size":[1,1,1],"position":[3,5,3]},{"color":"trans_blue","size":[1,1,1],"position":[4,5,3]},{"color":"trans_blue","size":[1,1,1],"position":[5,5,3]},{"color":"trans_blue","size":[1,1,1],"position":[6,5,3]},{"color":"trans_blue","size":[1,1,1],"position":[2,6,3]},{"color":"trans_blue","size":[1,1,1],"position":[3,6,3]},{"color":"trans_blue","size":[1,1,1],"position":[4,6,3]},{"color":"trans_blue","size":[1,1,1],"position":[5,6,3]},{"color":"trans_blue","size":[1,1,1],"position":[6,6,3]},{"color":"trans_blue","size":[1,1,1],"position":[2,7,3]},{"color":"trans_blue","size":[1,1,1],"position":[3,7,3]},{"color":"trans_blue","size":[1,1,1],"position":[4,7,3]},{"color":"trans_blue","size":[1,1,1],"position":[5,7,3]},{"color":"trans_blue","size":[1,1,1],"position":[6,7,3]},{"color":"trans_blue","size":[1,1,1],"position":[2,8,3]},{"color":"trans_blue","size":[1,1,1],"position":[3,8,3]},{"color":"trans_blue","size":[1,1,1],"position":[4,8,3]},{"color":"trans_blue","size":[1,1,1],"position":[5,8,3]},{"color":"trans_blue","size":[1,1,1],"position":[6,8,3]},{"color":"trans_blue","size":[1,1,1],"position":[2,9,3]},{"color":"trans_blue","size":[1,1,1],"position":[3,9,3]},{"color":"trans_blue","size":[1,1,1],"position":[4,9,3]},{"color":"trans_blue","size":[1,1,1],"position":[5,9,3]},{"color":"trans_blue","size":[1,1,1],"position":[6,9,3]},{"color":"trans_blue","size":[1,1,1],"position":[2,10,3]},{"color":"trans_blue","size":[1,1,1],"position":[3,10,3]},{"color":"trans_blue","size":[1,1,1],"position":[4,10,3]},{"color":"trans_blue","size":[1,1,1],"position":[5,10,3]},{"color":"trans_blue","size":[1,1,1],"position":[6,10,3]},{"color":"trans_blue","size":[1,1,1],"position":[2,11,3]},{"color":"trans_blue","size":[1,1,1],"position":[3,11,3]},{"color":"trans_blue","size":[1,1,1],"position":[4,11,3]},{"color":"trans_blue","size":[1,1,1],"position":[5,11,3]},{"color":"trans_blue","size":[1,1,1],"position":[6,11,3]},{"color":"trans_blue","size":[1,1,1],"position":[3,8,4]},{"color":"trans_blue","size":[1,1,1],"position":[4,8,4]},{"color":"trans_blue","size":[1,1,1],"position":[5,8,4]},{"color":"trans_blue","size":[1,1,1],"position":[3,9,4]},{"color":"trans_blue","size":[1,1,1],"position":[4,9,4]},{"color":"trans_blue","size":[1,1,1],"position":[5,9,4]},{"color":"trans_blue","size":[1,1,1],"position":[3,10,4]},{"color":"trans_blue","size":[1,1,1],"position":[4,10,4]},{"color":"trans_blue","size":[1,1,1],"position":[5,10,4]},{"color":"white","size":[0.2,0.2,2],"position":[4,9,5]}],"overall_image":{"iso":"https://craftsman-agent.aiagenta2z.com/craftsman-agent/static/TEMP_c0b498a3/lego_plan/view_iso.png","top":"https://craftsman-agent.aiagenta2z.com/craftsman-agent/static/TEMP_c0b498a3/lego_plan/view_top.png","front":"https://craftsman-agent.aiagenta2z.com/craftsman-agent/static/TEMP_c0b498a3/lego_plan/view_front.png","side":"https://craftsman-agent.aiagenta2z.com/craftsman-agent/static/TEMP_c0b498a3/lego_plan/view_side.png"},"inventory_image":{"inventory_parts":"https://craftsman-agent.aiagenta2z.com/craftsman-agent/static/TEMP_c0b498a3/lego_plan/inventory_parts.png","description":["Color bright_red, Size 1 x 1 x 1, Quantity 90","Color trans_blue, Size 1 x 1 x 1, Quantity 84","Color bright_blue, Size 1 x 1 x 1, Quantity 72","Color white, Size 0 x 0 x 2, Quantity 1"]},"assembly_step_image":{"0":"https://craftsman-agent.aiagenta2z.com/craftsman-agent/static/TEMP_c0b498a3/lego_plan/step_0.png","1":"https://craftsman-agent.aiagenta2z.com/craftsman-agent/static/TEMP_c0b498a3/lego_plan/step_1.png","2":"https://craftsman-agent.aiagenta2z.com/craftsman-agent/static/TEMP_c0b498a3/lego_plan/step_2.png","3":"https://craftsman-agent.aiagenta2z.com/craftsman-agent/static/TEMP_c0b498a3/lego_plan/step_3.png","4":"https://craftsman-agent.aiagenta2z.com/craftsman-agent/static/TEMP_c0b498a3/lego_plan/step_4.png","5":"https://craftsman-agent.aiagenta2z.com/craftsman-agent/static/TEMP_c0b498a3/lego_plan/step_5.png","6":"https://craftsman-agent.aiagenta2z.com/craftsman-agent/static/TEMP_c0b498a3/lego_plan/step_6.png","7":"https://craftsman-agent.aiagenta2z.com/craftsman-agent/static/TEMP_c0b498a3/lego_plan/step_7.png","8":"https://craftsman-agent.aiagenta2z.com/craftsman-agent/static/TEMP_c0b498a3/lego_plan/step_8.png","9":"https://craftsman-agent.aiagenta2z.com/craftsman-agent/static/TEMP_c0b498a3/lego_plan/step_9.png"}}
+```
+
+
+#### 2. Generate Minecraft Build Plan
+
+
+```
+export DEEPNLP_ONEKEY_ROUTER_ACCESS=YOUR_ACCESS_KEY
+
+curl -X POST "https://agent.deepnlp.org/agent_router" \
+-H "X-OneKey: $DEEPNLP_ONEKEY_ROUTER_ACCESS" \
+-H "Content-Type: application/json" \
+-d '{
+  "unique_id": "craftsman-agent/craftsman-agent",
+  "api_id": "generate_minecraft_build_plan",
+  "data": {
+    "prompt": "Minecraft scene of Grassland and TNT Block, Purple Crystals",
+    "images": [],
+    "mode": "basic"
+  }
+}'
+```
+
+CLI
+
+```shell
+onekey agent <unique_id> <api_id> $JSON --timeout 30000
+```
+
+
+```shell
+onekey agent craftsman-agent/craftsman-agent generate_minecraft_build_plan '{"prompt": "Minecraft scene of Grassland and TNT Block, Purple Crystals","images": [],"mode": "basic"}' --timeout 30000
+```
+
+3. Generate Tesla Car Wraps
+
+#### 
+```shell
+export DEEPNLP_ONEKEY_ROUTER_ACCESS=YOUR_ACCESS_KEY
+
+curl -X POST "https://agent.deepnlp.org/agent_router" \
+-H "X-OneKey: $DEEPNLP_ONEKEY_ROUTER_ACCESS" \
+-H "Content-Type: application/json" \
+-d '{
+  "unique_id": "craftsman-agent/craftsman-agent",
+  "api_id": "generate_tesla_wraps",
+  "data": {
+    "prompt": "I would like to paint my tesla model YL similar to race car, color of a blue and purple with stars",
+    "images": [],
+    "mode": "basic",
+    "car_model": "tesla_model_yl",
+    "output_number": 1
+  }
+}'
+
+```
+
+CLI
+
+```shell
+onekey agent <unique_id> <api_id> $JSON --timeout 30000
+```
+
+```shell
+onekey agent craftsman-agent/craftsman-agent generate_tesla_wraps '{"prompt":"I would like to paint my tesla model YL similar to race car, color of a blue and purple with stars","images":[],"mode":"basic","car_model":"tesla_model_yl","output_number":1}' --timeout 30000
+```
+
+Result
+```shell
+{"success":true,"text":"","images":[{"url":"https://us-static.aiagenta2z.com/local/files-wd/onekey_llm_router/efd67a8f-a427-4e56-8b00-c02d4eb332d5.png"}]}
 ```
 
 
@@ -104,8 +199,9 @@ Blender: 3D Software
 Step Decomposition/ Exploded View Rendering / Annotation /  Export/Publish/  Inventory Listing: Generate automatic parts list per step or total.
 
 
-### Related
+### Related DeepNLP OneKey Router Documents
 [AI Agent Marketplace](https://www.deepnlp.org/store/ai-agent)    
+[Skills Marketplace](https://www.deepnlp.org/store/skills)
 [AI Agent A2Z Deployment](https://www.deepnlp.org/workspace/deploy)    
 [PH AI Agent Router](https://www.producthunt.com/products/deepnlp-ai-agent-marketplace-router)    
 [PH AI Agent A2Z Infra](https://www.producthunt.com/products/ai-agent-a2z-infra-deployment-platform)    
