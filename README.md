@@ -6,7 +6,25 @@
 <img src="https://static.aiagenta2z.com/scripts/img/comment/80e65ff34838c544f9560047f34a3834.jpg" alt="Craftsman" width="48" height="48" /> Craftsman Agent is an AI assistant that transforms your text prompts into 3D build instructions — creating things from LEGO sets and Minecraft worlds to figurines and modular designs. Get detailed, step-by-step assembly charts and bring your ideas to life, faster and smarter than ever.
 Now Supported Skills, MCP and Use in Agent Router Playground to turn your creative ideas to a 3D build instruction plans.
 
-(Still in WIP, Please welcome to star the repo and will notify you latest update)
+| Skills                           | Description                                                                                                                |
+|----------------------------------|----------------------------------------------------------------------------------------------------------------------------|
+| generate-lego-3D-build-plan      | Generate Lego Build Plans of Lego Bricks, 3D models from text prompt and reference images                                  |
+| generate-minecraft-3D-build-plan | Generate Minecraft Build Plans of Minecraft Bricks,Items and Scenes from text prompt and reference images                  |
+| generate-tesla-car-wraps         | Generate Tesla Car Wrap and Design instruction  from text prompt and reference image, ready to display on Tesla Car Screen |
+| generate-perler-bead-pindou      | Generate Perler Beads / Pindou 2D Pixelization Pattern from text prompt and reference images                               |
+
+Online Craftsman Agent Studio
+
+Allow users to generate building Plans and turn ideas to design instructions. Gallery contains various templates
+and Marketplace allows users to set price per Digital resources to upload and share.
+
+| Section                     | Description                                      |
+|-----------------------------|--------------------------------------------------|
+| Craftsman Agent Website     | https://craftsman-agent.aiagenta2z.com           |
+| Craftsman Agent App         | https://craftsman-agent.aiagenta2z.com/app       |
+| Craftsman Agent Gallery     | https://craftsman-agent.aiagenta2z.com/gallery   |
+| Craftsman Agent Workspace   | https://craftsman-agent.aiagenta2z.com/workspace |
+| Craftsman Agent Marketplace | https://craftsman-agent.aiagenta2z.com/marketplace |
 
 ### Example 
 
@@ -28,6 +46,12 @@ Minecraft Generation 3D Build Scene
 
 Tesla Car Wraps Generation Works for Various Models
 ![Detailed Charts](https://raw.githubusercontent.com/AI-Hub-Admin/Craftsman-Agent/refs/heads/main/docs/tesla_car_wraps.jpg)
+
+Perler Beads Pattern Designer
+
+<img src="https://craftsman-agent.aiagenta2z.com/static/DerekZZ/8bf621c1-1ccd-42aa-98bf-96c5ee978bad/74fcd12d59464c569c13e2428316a7ab.png" alt="Craftsman-agent Perler Beads for Minecraft Diamond Pickaxes" width="500" />
+
+
 
 
 ## Usage
