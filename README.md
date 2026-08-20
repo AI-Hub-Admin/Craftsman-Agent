@@ -40,20 +40,20 @@ Online Craftsman Agent Studio
 Allow users to generate building Plans and turn ideas to design instructions. Gallery contains various templates
 and Marketplace allows users to set price per Digital resources to upload and share.
 
-| Section                                           | Description                                       |
-|---------------------------------------------------|---------------------------------------------------|
-| Craftsman Agent Website                           | https://craftsman-agent.aiagenta2z.com            |
-| Craftsman Agent App                               | https://craftsman-agent.aiagenta2z.com/app        |
-| Craftsman Agent App Image Generator               | https://craftsman-agent.aiagenta2z.com/app/image-generator       |
-| Craftsman Agent App 3D Generator                  | https://craftsman-agent.aiagenta2z.com/app/3d-generator    |
-| Craftsman Agent App Perler Beads Pindou Generator | https://craftsman-agent.aiagenta2z.com/app/pindou-perler-beads   |
-| Craftsman Agent App Tesla Car Wrap Generator      | https://craftsman-agent.aiagenta2z.com/app/tesla-designer  |
-| Craftsman Agent App Social Media Posts Generator  | https://craftsman-agent.aiagenta2z.com/app/social-media-posts  |
-| Craftsman Agent App AI Toy Generator              | https://craftsman-agent.aiagenta2z.com/app/toy-generator   |
-| Craftsman Agent Gallery                           | https://craftsman-agent.aiagenta2z.com/gallery     |
-| Craftsman Agent Workspace                         | https://craftsman-agent.aiagenta2z.com/workspace   |
-| Craftsman Agent Marketplace                       | https://craftsman-agent.aiagenta2z.com/marketplace |
-| Craftsman Agent Store Manufacturing on Demand     | https://craftsman-agent.aiagenta2z.com/store |
+| Section                                                | Description                                       |
+|--------------------------------------------------------|---------------------------------------------------|
+| Craftsman Agent Website                                | https://craftsman-agent.aiagenta2z.com            |
+| Craftsman Agent App                                    | https://craftsman-agent.aiagenta2z.com/app        |
+| Craftsman Agent App Image Generator                    | https://craftsman-agent.aiagenta2z.com/app/image-generator       |
+| Craftsman Agent App 3D Generator                       | https://craftsman-agent.aiagenta2z.com/app/3d-generator    |
+| Craftsman Agent App Perler Beads Pindou Generator      | https://craftsman-agent.aiagenta2z.com/app/pindou-perler-beads   |
+| Craftsman Agent App Tesla Car Wrap Generator           | https://craftsman-agent.aiagenta2z.com/app/tesla-designer  |
+| Craftsman Agent App Social Media Posts Generator       | https://craftsman-agent.aiagenta2z.com/app/social-media-posts  |
+| Craftsman Agent App AI Toy Generator                   | https://craftsman-agent.aiagenta2z.com/app/toy-generator   |
+| Craftsman Agent Gallery                                | https://craftsman-agent.aiagenta2z.com/gallery     |
+| Craftsman Agent Workspace                              | https://craftsman-agent.aiagenta2z.com/workspace   |
+| Craftsman Agent Marketplace                            | https://craftsman-agent.aiagenta2z.com/marketplace |
+| Craftsman Agent Store Manufacturing on Demand Platform | https://craftsman-agent.aiagenta2z.com/store |
 
 
 ### Example 
