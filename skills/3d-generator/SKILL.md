@@ -147,21 +147,29 @@ curl -X POST "https://agent.deepnlp.org/agent_router" \
 
 ##### Outputs Parameters Definition
 
-| Parameters        | Description                                        |
-|-------------------|----------------------------------------------------|
-| task_id           | The task id of generated 3d model                  |
-| status            | The status of generated task                       |
-| progress | 0-100, int, progress of Task                       |
-| model             | 3D model downloadable urls                         |
-| preview            | The rendering preview of the 3d model              |
-| credits            | Credits consumed for each 3D generation Task       |
-| raw_output         | The original raw outputs of tripo3d.ai or meshy.ai |
+| Parameters  | Description                                                                                                                              |
+|-------------|------------------------------------------------------------------------------------------------------------------------------------------|
+| task_id     | The task id of generated 3d model                                                                                                        |
+| share_url   | The URL with private keys to view your Toy Generator Task Models, Images on a Canvas, Available to track task progress and final results |
+| status      | The status of generated task                                                                                                             |
+| progress    | 0-100, int, progress of Task                                                                                                             |
+| model       | 3D model downloadable urls                                                                                                               |
+| preview     | The rendering preview of the 3d model                                                                                                    |
+| credits     | Credits consumed for each 3D generation Task                                                                                             |
+| raw_output  | The original raw outputs of tripo3d.ai or meshy.ai                                                                                       |
+
+
+**Note**:
+`share_url`: After the 3D model generation task are started, a `share_url` value contains URL of the canvas workspace will be returned.
+This is the website to view the progress of the generation task as well as the final online 3D model preview of the model files (.glb,.obj,etc). 
+Please notify user the `share_url` link to view the Toy 3D generation task status and results online!
 
 
 #### Expected Outputs 
 
 ```json
 {
+  "share_url": "https://craftsman-agent.aiagenta2z.com/app/sessions/share/71b3a8b8-66b7-460d-ab80-998313a6a2f2?pwd=da5e",
   "task_id": "96b2116e-4b86-4d3c-af04-baf0da0c23ac",
   "status": "success",
   "progress": 100,
@@ -233,7 +241,6 @@ curl -X POST "https://agent.deepnlp.org/agent_router" \
   "tag_list": ""
 }
 ```
-
 
 ## 1.2 CLIs Usage
 
@@ -323,6 +330,7 @@ curl -X POST "https://agent.deepnlp.org/agent_router" \
 ```json
 {
   "task_id": "96b2116e-4b86-4d3c-af04-baf0da0c23ac",
+  "share_url": "https://craftsman-agent.aiagenta2z.com/app/sessions/share/71b3a8b8-66b7-460d-ab80-998313a6a2f2?pwd=da5e",
   "status": "success",
   "progress": 100,
   "model": {
@@ -343,6 +351,12 @@ curl -X POST "https://agent.deepnlp.org/agent_router" \
   "credits": 50
 }
 ```
+
+**Note**:
+`share_url`: After the 3D model generation task are started, a `share_url` value contains URL of the canvas workspace will be returned.
+This is the website to view the progress of the generation task as well as the final online 3D model preview of the model files (.glb,.obj,etc). 
+Please notify user the `share_url` link to view the Toy 3D generation task status and results online!
+
 
 ## 2.2 CLIs Usage
 
@@ -423,6 +437,7 @@ curl -X POST "https://agent.deepnlp.org/agent_router" \
 ```json
 {
   "task_id": "96b2116e-4b86-4d3c-af04-baf0da0c23ac",
+  "share_url": "https://craftsman-agent.aiagenta2z.com/app/sessions/share/71b3a8b8-66b7-460d-ab80-998313a6a2f2?pwd=da5e",
   "status": "success",
   "progress": 100,
   "model": {
@@ -435,6 +450,11 @@ curl -X POST "https://agent.deepnlp.org/agent_router" \
   }
 }
 ```
+
+**Note**:
+`share_url`: After the 3D model generation task are started, a `share_url` value contains URL of the canvas workspace will be returned.
+This is the website to view the progress of the generation task as well as the final online 3D model preview of the model files (.glb,.obj,etc). 
+Please notify user the `share_url` link to view the Toy 3D generation task status and results online!
 
 ## 3.2 CLIs Usage
 

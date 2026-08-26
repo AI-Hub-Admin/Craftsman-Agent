@@ -1,6 +1,6 @@
 ---
-name: "ai-poster-generator"
-description: "AI Poster Image Generator Skills to Generate Multi-Page Image Carousels from Templates such as AI Poster Sota Models Nano Banana, Nano Banana-2 ,Imagen-2 and more are available"
+name: "image-generator"
+description: "AI Image Generator Skills to Generate Multi-Page Image Carousels from Templates such as AI Poster Sota Models Nano Banana, Nano Banana-2 ,Imagen-2 and more are available"
 env:
   DEEPNLP_ONEKEY_ROUTER_ACCESS:
     required: true

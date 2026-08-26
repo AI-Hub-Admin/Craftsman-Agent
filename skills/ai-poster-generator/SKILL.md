@@ -1,6 +1,6 @@
 ---
-name: "image-generator"
-description: "AI Image Generator Skills to Generate Multi-Page Image Carousels from Templates such as AI Poster, Social Media Carousel Presentation(Powerpoints), App Store, Icon Designer, Logo Designer,Photo Editor,etc. Sota Models Nano Banana,Imagen-2 and more are available"
+name: "ai-poster-generator"
+description: "AI Poster Generator Skills Served By Craftsman Agent, Generate Editable AI Poster using sota Image models and design config, support various formats, ratio, design styles"
 env:
   DEEPNLP_ONEKEY_ROUTER_ACCESS:
     required: true

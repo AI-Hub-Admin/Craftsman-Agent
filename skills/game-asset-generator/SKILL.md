@@ -36,7 +36,7 @@ The typical workflow is:
 | toy_generator_task_poll    | Poll the progress and final results of a Toy 3D Generation Task                             |
 
 
-#### Toy Generation Templates
+#### Toy Generation Templates For Parameter `template_id`
 
 | Template ID  | Template Name | Description                                                           |
 | ------------ | ------------- | --------------------------------------------------------------------- |
@@ -47,7 +47,7 @@ The typical workflow is:
 | architecture | Architecture  | Architecture Toy Design                                               |
 
 
-#### Toy Generator Templates Models and Asset Sizes 
+#### Toy Generator Templates Models and Asset Sizes
 
 | template_id | asset_size | Description                                      |
 | ----------- | ---------- | ------------------------------------------------ |
@@ -115,6 +115,28 @@ The design draft can be used as the input for the subsequent Toy 3D Model Genera
 | mode              | Generation mode such as `demo` or `basic`                                                       |
 
 
+#### Input Parameter Options
+
+**template_id**: The template of the toys to generate
+**asset_size**: Default Asset Size Enumeration for selection, e.g. common settings for AI Figurine, 
+
+| template_id | asset_size | Description                                      |
+| ----------- | ---------- | ------------------------------------------------ |
+| Figurine    | small      | Small Collectible (5cm) - W:10mm, D:10mm, H:50mm |
+| Figurine    | standard   | Standard Figure (10cm) - W:20mm, D:20mm, H:100mm |
+| Figurine    | premium    | Premium Statue (30cm) - W:30mm, D:30mm, H:300mm  |
+
+**mode**: The mode as complexity of design for each generation task
+
+| mode     | Description                                                                                                          |
+|----------|----------------------------------------------------------------------------------------------------------------------|
+| basic    | Basic Complexity for Design                                                                                          |
+| standard | Standard Complexity for Design                                                                                       |
+| advanced | Advanced Complexity for Design                                                                                       |
+| demo     | Demo mode will only return predefined results for debug and APIs purpose, for production, please use other settings. |
+
+
+
 #### Requests Input Example
 ```commandline
 export DEEPNLP_ONEKEY_ROUTER_ACCESS=your_access_key
@@ -135,7 +157,7 @@ curl -X POST "https://agent.deepnlp.org/agent_router" \
       "provider_model_id": "default",
       "session_name": "3D Build Plan",
       "tag_list": "",
-      "mode": "demo"
+      "mode": "basic"
     }
   }'
 ```
@@ -182,7 +204,7 @@ curl -X POST "https://agent.deepnlp.org/agent_router" \
 ### 1.2 CLI Usage
 
 ```shell
-npx onekey agent craftsman-agent/craftsman-agent toy_generator_design_draft '{"prompt":"Stuffed Steve in Minecraft","images":["https://static.aiagenta2z.com/container/craftsman-agent/default/static/derekzz/a49f905b-4e0d-40c6-af7a-c37be3d1741e/3ccb042bbd9b41c3a9f5d31c564ef4c0.png"],"asset_size":"small","template_id":"stuffed-toy","provider_model_id":"default","session_name":"3D Build Plan","tag_list":"","mode":"demo"}'
+npx onekey agent craftsman-agent/craftsman-agent toy_generator_design_draft '{"prompt":"Stuffed Steve in Minecraft","images":["https://static.aiagenta2z.com/container/craftsman-agent/default/static/derekzz/a49f905b-4e0d-40c6-af7a-c37be3d1741e/3ccb042bbd9b41c3a9f5d31c564ef4c0.png"],"asset_size":"small","template_id":"stuffed-toy","provider_model_id":"default","session_name":"3D Build Plan","tag_list":"","mode":"basic"}'
 ```
 
 
@@ -198,18 +220,26 @@ Create a new Toy 3D Model Generation Task from a text prompt, source images, and
 
 #### Request Input Parameters
 
-| Parameter         | Description                                                                                                                       |
-| ----------------- | --------------------------------------------------------------------------------------------------------------------------------- |
-| prompt            | Text prompt describing the desired 3D toy                                                                                         |
-| images            | Array of source image URLs                                                                                                        |
-| multi_view        | Object containing multi-view image URLs. `front` is required when using multi-view generation; `right` and `back` can be supplied |
-| asset_size        | Target toy asset size, depending on the selected template                                                                         |
-| template_id       | Toy generation template                                                                                                           |
-| provider_model_id | 3D generation provider, such as `tripo/tripo` or `meshy/meshy`                                                                    |
-| model             | Optional provider-specific model, such as `P1-20260311` or `v3.1-20260211`                                                        |
-| session_name      | Name of the generation session                                                                                                    |
-| tag_list          | Optional tags                                                                                                                     |
-| mode              | Generation mode such as `basic`, `standard`, `advanced`, or `demo`                                                                |
+| Parameter         | Description                                                                                                                                 |
+| ----------------- |---------------------------------------------------------------------------------------------------------------------------------------------|
+| session_id        | Set Existing session_id the same as results from `toy_generator_design_draft` API in 1.1 section or Create a new separate session id (uuid) |
+| prompt            | Text prompt describing the desired 3D toy                                                                                                   |
+| images            | Array of source image URLs                                                                                                                  |
+| multi_view        | Object containing multi-view image URLs. `front` is required when using multi-view generation; `left`, `right` and `back` can be supplied   |
+| asset_size        | Target toy asset size, depending on the selected template                                                                                   |
+| template_id       | Toy generation template                                                                                                                     |
+| provider_model_id | 3D generation provider, such as `tripo/tripo` or `meshy/meshy`                                                                              |
+| model             | Optional provider-specific model, such as `P1-20260311` or `v3.1-20260211`                                                                  |
+| session_name      | Name of the generation session                                                                                                              |
+| tag_list          | Optional tags                                                                                                                               |
+| mode              | Generation mode such as `basic`, `standard`, `advanced`, or `demo`                                                                          |
+
+**Note**: 
+`session_id` of Toy Generation 3D Task API
+a. If you are calling the API `toy_generator_task_create` generating toy 3D models from the outputs design craft images of first API `toy_generator_design_draft`, 
+please set the input `session_id` of new API calling `toy_generator_task_create` the same as the outputs `session_id` of results of `toy_generator_design_draft`,
+which combine the two APIs into the same session and workflow in the context.
+b. Otherwise, if you are calling the `toy_generator_task_create` stand alone using other reference images, set the `session_id` as blank.
 
 
 #### Request Example
@@ -229,6 +259,7 @@ curl -X POST "https://agent.deepnlp.org/agent_router" \
       ],
       "multi_view": {
         "front": "https://craftsman-agent.aiagenta2z.com/static/derekzz/75302fb3-b0f4-4bfe-a406-1c97eda64dbf/build_front.png",
+        "left": "",
         "right": "https://craftsman-agent.aiagenta2z.com/static/derekzz/75302fb3-b0f4-4bfe-a406-1c97eda64dbf/build_right.png",
         "back": "https://craftsman-agent.aiagenta2z.com/static/derekzz/75302fb3-b0f4-4bfe-a406-1c97eda64dbf/build_back.png"
       },

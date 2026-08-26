@@ -36,7 +36,7 @@ The typical workflow is:
 | toy_generator_task_poll    | Poll the progress and final results of a Toy 3D Generation Task                             |
 
 
-#### Toy Generation Templates
+#### Toy Generation Templates For Parameter `template_id`
 
 | Template ID  | Template Name | Description                                                           |
 | ------------ | ------------- | --------------------------------------------------------------------- |
@@ -115,6 +115,27 @@ The design draft can be used as the input for the subsequent Toy 3D Model Genera
 | mode              | Generation mode such as `demo` or `basic`                                                       |
 
 
+#### Input Parameter Options
+
+**template_id**: The template of the toys to generate
+**asset_size**: Default Asset Size Enumeration for selection, e.g. common settings for AI Figurine, 
+
+| template_id | asset_size | Description                                      |
+| ----------- | ---------- | ------------------------------------------------ |
+| Figurine    | small      | Small Collectible (5cm) - W:10mm, D:10mm, H:50mm |
+| Figurine    | standard   | Standard Figure (10cm) - W:20mm, D:20mm, H:100mm |
+| Figurine    | premium    | Premium Statue (30cm) - W:30mm, D:30mm, H:300mm  |
+
+**mode**: The mode as complexity of design for each generation task
+
+| mode     | Description                                                                                                          |
+|----------|----------------------------------------------------------------------------------------------------------------------|
+| basic    | Basic Complexity for Design                                                                                          |
+| standard | Standard Complexity for Design                                                                                       |
+| advanced | Advanced Complexity for Design                                                                                       |
+| demo     | Demo mode will only return predefined results for debug and APIs purpose, for production, please use other settings. |
+
+
 #### Requests Input Example
 ```commandline
 export DEEPNLP_ONEKEY_ROUTER_ACCESS=your_access_key
@@ -144,6 +165,7 @@ curl -X POST "https://agent.deepnlp.org/agent_router" \
 | Key                  | Description                                   |
 | -------------------- | --------------------------------------------- |
 | success              | Whether the design draft generation succeeded |
+| share_url            | The URL of workspace containing the canvas to view the design |
 | blueprint            | Toy design blueprint data, when available     |
 | reference_images     | Generated reference image URLs                |
 | final_image_url      | URL of the generated multi-view design sheet  |
@@ -160,6 +182,7 @@ curl -X POST "https://agent.deepnlp.org/agent_router" \
 ```commandline
 {
   "success": true,
+  "share_url": "https://craftsman-agent.aiagenta2z.com/app/sessions/share/71b3a8b8-66b7-460d-ab80-998313a6a2f2?pwd=da5e",      
   "blueprint": {},
   "reference_images": [
     "/static/derekzz/1f752866-6757-49e8-ace3-58a0631592f9/2ae7b059979f412ea9b023c741efb3df.png",
@@ -178,6 +201,12 @@ curl -X POST "https://agent.deepnlp.org/agent_router" \
 }
 
 ```
+
+**Note**:
+`share_url`: After the Toy Design generation task finished, a `share_url` value contains URL of the canvas workspace will be returned.
+This is the website to view the progress of the generation and the multiview sheets, the front view, side view, backview.
+Please notify user the `share_url` link to view the Toy Design generation task status and results online!
+
 
 ### 1.2 CLI Usage
 
@@ -198,18 +227,26 @@ Create a new Toy 3D Model Generation Task from a text prompt, source images, and
 
 #### Request Input Parameters
 
-| Parameter         | Description                                                                                                                       |
-| ----------------- | --------------------------------------------------------------------------------------------------------------------------------- |
-| prompt            | Text prompt describing the desired 3D toy                                                                                         |
-| images            | Array of source image URLs                                                                                                        |
-| multi_view        | Object containing multi-view image URLs. `front` is required when using multi-view generation; `right` and `back` can be supplied |
-| asset_size        | Target toy asset size, depending on the selected template                                                                         |
-| template_id       | Toy generation template                                                                                                           |
-| provider_model_id | 3D generation provider, such as `tripo/tripo` or `meshy/meshy`                                                                    |
-| model             | Optional provider-specific model, such as `P1-20260311` or `v3.1-20260211`                                                        |
-| session_name      | Name of the generation session                                                                                                    |
-| tag_list          | Optional tags                                                                                                                     |
-| mode              | Generation mode such as `basic`, `standard`, `advanced`, or `demo`                                                                |
+| Parameter         | Description                                                                                                                                 |
+| ----------------- |---------------------------------------------------------------------------------------------------------------------------------------------|
+| session_id        | Set Existing session_id the same as results from `toy_generator_design_draft` API in 1.1 section or Create a new separate session id (uuid) |
+| prompt            | Text prompt describing the desired 3D toy                                                                                                   |
+| images            | Array of source image URLs                                                                                                                  |
+| multi_view        | Object containing multi-view image URLs. `front` is required when using multi-view generation; `left`, `right` and `back` can be supplied   |
+| asset_size        | Target toy asset size, depending on the selected template                                                                                   |
+| template_id       | Toy generation template                                                                                                                     |
+| provider_model_id | 3D generation provider, such as `tripo/tripo` or `meshy/meshy`                                                                              |
+| model             | Optional provider-specific model, such as `P1-20260311` or `v3.1-20260211`                                                                  |
+| session_name      | Name of the generation session                                                                                                              |
+| tag_list          | Optional tags                                                                                                                               |
+| mode              | Generation mode such as `basic`, `standard`, `advanced`, or `demo`                                                                          |
+
+**Note**: 
+`session_id` of Toy Generation 3D Task API
+a. If you are calling the API `toy_generator_task_create` generating toy 3D models from the outputs design craft images of first API `toy_generator_design_draft`, 
+please set the input `session_id` of new API calling `toy_generator_task_create` the same as the outputs `session_id` of results of `toy_generator_design_draft`,
+which combine the two APIs into the same session and workflow in the context.
+b. Otherwise, if you are calling the `toy_generator_task_create` stand alone using other reference images, set the `session_id` as blank.
 
 
 #### Request Example
@@ -229,6 +266,7 @@ curl -X POST "https://agent.deepnlp.org/agent_router" \
       ],
       "multi_view": {
         "front": "https://craftsman-agent.aiagenta2z.com/static/derekzz/75302fb3-b0f4-4bfe-a406-1c97eda64dbf/build_front.png",
+        "left": "",
         "right": "https://craftsman-agent.aiagenta2z.com/static/derekzz/75302fb3-b0f4-4bfe-a406-1c97eda64dbf/build_right.png",
         "back": "https://craftsman-agent.aiagenta2z.com/static/derekzz/75302fb3-b0f4-4bfe-a406-1c97eda64dbf/build_back.png"
       },
@@ -249,6 +287,7 @@ curl -X POST "https://agent.deepnlp.org/agent_router" \
 | -------------------- |---------------------------------------------------------|
 | provider_model_id    | Selected 3D generation provider                         |
 | task_id              | Unique ID of the created 3D generation task             |
+| share_url            | The Private URL with keys to view your Toy Generator Task Models, Images on a Canvas, Available to track task progress and final results |
 | session_id           | Generated workspace/session ID                          |
 | title                | Generation session title                                |
 | workspace_session_id | Workspace session ID                                    |
@@ -322,6 +361,7 @@ curl -X POST "https://agent.deepnlp.org/agent_router" \
 | Key                    | Description                                          |
 | ---------------------- | ---------------------------------------------------- |
 | task_id                | ID of the Toy 3D Generation Task                     |
+| share_url            | The URL with Private keys to view your Toy Generator Task Models, Images on a Canvas, Available to track task progress and final results |
 | status                 | Current task status, such as `running` or `success`  |
 | progress               | Generation progress from 0-100                       |
 | model                  | Generated 3D model information                       |
@@ -427,6 +467,12 @@ Finished Output Example
   "tag_list": ""
 }
 ```
+
+**Note**:
+`share_url`: After the 3D model generation task are started, a `share_url` value contains URL of the canvas workspace will be returned.
+This is the website to view the progress of the generation task as well as the final online 3D model preview of the model files (.glb,.obj,etc). 
+Please notify user the `share_url` link to view the Toy 3D generation task status and results online!
+
 
 #### 3.2 CLI Usage
 ```commandline
