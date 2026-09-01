@@ -1,0 +1,15 @@
+{
+  "name": "aiagenta2z",
+  "description": "DeepNLP x AI Agent A2Z host one of the largest open source AI Agent marketplace index of 10k+ Agents covers 30+ categories, and APIs/Skills/CLIs served on OneKey Agent Gateway. Visit https://github.com/aiagenta2z/ai-agent-marketplace for more details.",
+  "owner": {
+    "name": "AI Agent A2Z"
+  },
+  "plugins": [
+    {
+      "name": "craftsman-agent",
+      "source": ".",
+      "description": "AI Agent design skills for toy design, 3D generation, image generation, LEGO, Minecraft, social media, and creative workflows.",
+      "version": "1.0.0"
+    }
+  ]
+}

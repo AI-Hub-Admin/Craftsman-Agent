@@ -108,6 +108,17 @@ agtm add --github https://github.com/AI-Hub-Admin/Craftsman-Agent --skill crafts
 npx skills add https://github.com/ai-hub-admin/craftsman-agent --skill craftsman-agent-skills
 ```
 
+### Claude Plugin
+
+```commandline
+# Add the AI Agent A2Z marketplace for Craftsman Agent Design Skills
+/plugin marketplace add AI-Hub-Admin/Craftsman-agent
+
+# Install the Craftsman Agent plugin
+/plugin install craftsman-agent@aiagenta2z
+```
+
+
 ### MCP
 
 Usage in your AI Clients
