@@ -116,8 +116,14 @@ npx skills add https://github.com/ai-hub-admin/craftsman-agent --skill craftsman
 
 # Install the Craftsman Agent plugin
 /plugin install craftsman-agent@aiagenta2z
-```
 
+# Usage Example
+/craftsman-agent:3d-generator      ### Generate 3D Models
+/craftsman-agent:image-generator   ### Generate Images
+/craftsman-agent:toy-generator     ### Generate Toys
+/craftsman-agent:ai-ppt-powerpoint-generator  ### Generate Images AI PPT
+/craftsman-agent:generate-perler-bead-pindou   ## Generate Perler Beads Pindou Patterns
+```
 
 ### MCP
 
