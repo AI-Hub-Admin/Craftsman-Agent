@@ -9,7 +9,7 @@
       "name": "craftsman-agent",
       "source": ".",
       "description": "AI Agent design skills for toy design, 3D generation, image generation, LEGO, Minecraft, social media, and creative workflows.",
-      "version": "1.0.0"
+      "version": "1.0.1"
     }
   ]
 }
