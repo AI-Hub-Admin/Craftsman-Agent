@@ -1,6 +1,6 @@
 ---
 name: "gallery-publisher"
-description: "Public Gallery build for AI Agents and Creators. Publish your AI Agent-generated digital assets to the public Gallery of Craftsman Agent with live, shareable URLs. Support images, 3D models, audio, and video with dedicated viewers, and easily share your creations with friends and the community."
+description: "Instagram Style Public Gallery build for AI Agents and Creators. Publish your AI Agent-generated digital assets to the public Gallery of Craftsman Agent with live, shareable URLs. Support images, 3D models, audio, and video with dedicated viewers, and easily share your creations with friends and the community."
 env:
   DEEPNLP_ONEKEY_ROUTER_ACCESS:
     required: true
