@@ -1,6 +1,6 @@
 ---
-name: "clothing-designer"
-description: "Agentic AI Clothing Designer generates customized clothing designs for print on demand (POD) and manufacturing on demand (MOD), including T-Shirts, Shirts, Polo Shirts, Hoodies, Jackets, Coats, Dresses, Skirts, Pants, Jeans, Shorts, Hats, Scarves, Gloves, Socks and more. It supports structured clothing parameters, reference images, customized text and logos, interactive 3D viewers, and multi-view design generation."
+name: "dress-designer"
+description: "Agentic AI Dress Designer generates customized Dress designs for print on demand (POD) and manufacturing on demand (MOD). It supports structured clothing parameters, reference images, customized text and logos, interactive 3D viewers, and multi-view design generation."
 env:
   DEEPNLP_ONEKEY_ROUTER_ACCESS:
     required: true
@@ -10,7 +10,7 @@ dependencies:
   python: []
 ---
 
-# AI Clothing Designer Skills from Craftsman Agent
+# AI Dress Designer Skills from Craftsman Agent
 
 Agentic AI Clothing Designer generates customized clothing designs for print, personalization, prototyping, and manufacturing. It supports T-Shirts, Shirts, Polo Shirts, Hoodies / Sweatshirts, Jackets, Coats, Dresses, Skirts, Pants / Trousers, Jeans, Shorts, Hats / Caps, Scarves, Gloves, and Socks.
 
@@ -28,7 +28,7 @@ The design workflow can generate:
 
 After the design, you can also use the Craftsman Agent Manufacturing Platform to find suppliers of Craftsman of all kinds.
 
-https://craftsman-agent.aiagenta2z.com/app/clothing-designer
+https://craftsman-agent.aiagenta2z.com/app/clothing-designer/dress
 
 The typical Clothing designer workflow such as T-Shirt POD include:
 
@@ -65,7 +65,7 @@ export DEEPNLP_ONEKEY_ROUTER_ACCESS=your_access_key
 
 | Section                                 | Description                                                  |
 |-----------------------------------------|--------------------------------------------------------------|
-| Craftsman Clothing Designer App Online  | https://craftsman-agent.aiagenta2z.com/app/clothing-designer |
+| Craftsman Clothing Designer App Online  | https://craftsman-agent.aiagenta2z.com/app/clothing-designer/dress |
 | Craftsman Website                       | https://craftsman-agent.aiagenta2z.com                       |
 | Craftsman App                           | https://craftsman-agent.aiagenta2z.com/app                   |
 | Craftsman Gallery                       | https://craftsman-agent.aiagenta2z.com/gallery               |
@@ -85,8 +85,7 @@ export DEEPNLP_ONEKEY_ROUTER_ACCESS=your_access_key
 
 
 #### Template ID:  t-shirt
-Prompt: Design a white T-shirt made of cotton. The front prints `AI Agent A2Z` and graphic image of https://avatars.githubusercontent.com/u/242328252?s=200&v=4
-The back prints `Craftsman` and the image of Craftsman Agent Icon https://craftsman-agent.aiagenta2z.com/static/website/agent_icon.jpg. 
+  Prompt: Design an white T-shirt graphic tee made of cotton. The front prints 'Craftsman' and the logo of Craftsman Agent.
 
 #### Template ID:  shirt
   Prompt: Create a slim fit casual shirt using linen material.
@@ -95,10 +94,8 @@ The back prints `Craftsman` and the image of Craftsman Agent Icon https://crafts
   Prompt: A regular fit pique polo shirt with a ribbed collar.
 
 #### Template ID:  hoodie
-Prompt: Design a gray cotton Hoodie Long Sleeves.  The Front prints `AI Agent A2Z` and image of https://avatars.githubusercontent.com/u/242328252?s=200&v=4
-The Back prints `Craftsman` and the image of Craftsman Agent Icon https://craftsman-agent.aiagenta2z.com/static/website/agent_icon.jpg. 
-The Left chest prints a small Text logo of "A2Z"
-
+  Prompt: Design a relaxed fit fleece pullover hoodie sweater. The front prints 'Craftsman' and the logo of Craftsman Agent.
+  
 #### Template ID:  jacket
   Prompt: Create a regular fit leather bomber jacket.
   
@@ -169,7 +166,7 @@ The resulting design draft can contain an online interactive 3D model viewer for
 
 **template_id**: The template reference model to generate 
 
-#### Supported Clothing Category Template IDs
+#### Supported Jewelry Category Template IDs
 
 Supported `template_id` include
 
@@ -212,22 +209,12 @@ curl -X POST "https://agent.deepnlp.org/agent_router" \
   -H "Content-Type: application/json" \
   -H "X-OneKey: $DEEPNLP_ONEKEY_ROUTER_ACCESS" \
   -d '{
-      "prompt": "Design a white cotton graphic T-shirt with a regular fit. Print \"Craftsman\" and the Craftsman Agent logo on the front.",
+      "prompt": "Create an A-line maxi dress made of silk.",
       "images": [],
-      "template_id": "t-shirt",
+      "template_id": "dress",
       "provider_model_id": "default",
-      "options": {
-        "gender": "unisex",
-        "sub_category": "graphic",
-        "material": "cotton",
-        "asset_size": "m",
-        "fit": "regular",
-        "neckline": "crew",
-        "sleeve": "short",
-        "length": "hip",
-        "hem_style": "straight"
-      },
-      "session_name": "Craftsman Graphic T-Shirt",
+      "options": {},
+      "session_name": "Craftsman Dress",
       "tag_list": "t-shirt,graphic,pod",
       "mode": "demo"
     }
@@ -298,6 +285,7 @@ npx onekey agent craftsman-agent/craftsman-agent clothing_generator_design_draft
 
 **Note**:
 demo mode will return demo results for debug purpose, when production, change to 'basic' or other modes.
+
 
 
 #### 1.3 Detailed Clothing Designer Options
@@ -1361,5 +1349,7 @@ https://craftsman-agent.aiagenta2z.com/app/clothing-designer
 ```
 
 Use these identifiers consistently when constructing API and CLI requests.
+
+
 
 

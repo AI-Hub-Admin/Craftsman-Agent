@@ -1,6 +1,6 @@
 ---
-name: "clothing-designer"
-description: "Agentic AI Clothing Designer generates customized clothing designs for print on demand (POD) and manufacturing on demand (MOD), including T-Shirts, Shirts, Polo Shirts, Hoodies, Jackets, Coats, Dresses, Skirts, Pants, Jeans, Shorts, Hats, Scarves, Gloves, Socks and more. It supports structured clothing parameters, reference images, customized text and logos, interactive 3D viewers, and multi-view design generation."
+name: "shirt-designer"
+description: "Agentic AI Shirt Designer generates customized Shirt designs for print on demand (POD) and manufacturing on demand (MOD). It supports structured clothing parameters, reference images, customized text and logos, interactive 3D viewers, and multi-view design generation."
 env:
   DEEPNLP_ONEKEY_ROUTER_ACCESS:
     required: true
@@ -10,7 +10,7 @@ dependencies:
   python: []
 ---
 
-# AI Clothing Designer Skills from Craftsman Agent
+# AI Shirt Designer Skills from Craftsman Agent
 
 Agentic AI Clothing Designer generates customized clothing designs for print, personalization, prototyping, and manufacturing. It supports T-Shirts, Shirts, Polo Shirts, Hoodies / Sweatshirts, Jackets, Coats, Dresses, Skirts, Pants / Trousers, Jeans, Shorts, Hats / Caps, Scarves, Gloves, and Socks.
 
@@ -28,7 +28,7 @@ The design workflow can generate:
 
 After the design, you can also use the Craftsman Agent Manufacturing Platform to find suppliers of Craftsman of all kinds.
 
-https://craftsman-agent.aiagenta2z.com/app/clothing-designer
+https://craftsman-agent.aiagenta2z.com/app/clothing-designer/shirt
 
 The typical Clothing designer workflow such as T-Shirt POD include:
 
@@ -65,7 +65,7 @@ export DEEPNLP_ONEKEY_ROUTER_ACCESS=your_access_key
 
 | Section                                 | Description                                                  |
 |-----------------------------------------|--------------------------------------------------------------|
-| Craftsman Clothing Designer App Online  | https://craftsman-agent.aiagenta2z.com/app/clothing-designer |
+| Craftsman Clothing Designer App Online  | https://craftsman-agent.aiagenta2z.com/app/clothing-designer/shirt |
 | Craftsman Website                       | https://craftsman-agent.aiagenta2z.com                       |
 | Craftsman App                           | https://craftsman-agent.aiagenta2z.com/app                   |
 | Craftsman Gallery                       | https://craftsman-agent.aiagenta2z.com/gallery               |
@@ -87,6 +87,7 @@ export DEEPNLP_ONEKEY_ROUTER_ACCESS=your_access_key
 #### Template ID:  t-shirt
 Prompt: Design a white T-shirt made of cotton. The front prints `AI Agent A2Z` and graphic image of https://avatars.githubusercontent.com/u/242328252?s=200&v=4
 The back prints `Craftsman` and the image of Craftsman Agent Icon https://craftsman-agent.aiagenta2z.com/static/website/agent_icon.jpg. 
+
 
 #### Template ID:  shirt
   Prompt: Create a slim fit casual shirt using linen material.
@@ -212,22 +213,12 @@ curl -X POST "https://agent.deepnlp.org/agent_router" \
   -H "Content-Type: application/json" \
   -H "X-OneKey: $DEEPNLP_ONEKEY_ROUTER_ACCESS" \
   -d '{
-      "prompt": "Design a white cotton graphic T-shirt with a regular fit. Print \"Craftsman\" and the Craftsman Agent logo on the front.",
+      "prompt": "Create a slim fit casual shirt using linen material.",
       "images": [],
-      "template_id": "t-shirt",
+      "template_id": "shirt",
       "provider_model_id": "default",
-      "options": {
-        "gender": "unisex",
-        "sub_category": "graphic",
-        "material": "cotton",
-        "asset_size": "m",
-        "fit": "regular",
-        "neckline": "crew",
-        "sleeve": "short",
-        "length": "hip",
-        "hem_style": "straight"
-      },
-      "session_name": "Craftsman Graphic T-Shirt",
+      "options": {},
+      "session_name": "Craftsman Shirt",
       "tag_list": "t-shirt,graphic,pod",
       "mode": "demo"
     }
@@ -285,9 +276,9 @@ This example use the 'demo' mode for debug purpose, for real example, please use
 ```
 
 **Note**:
-`share_url`: After the Jewelry Design generation task finished, a `share_url` value contains URL of the canvas workspace will be returned.
+`share_url`: After the Clothing Design generation task finished, a `share_url` value contains URL of the canvas workspace will be returned.
 This is the website to view the progress of the generation and the multiview sheets, the front view, side view, backview.
-Please notify user the `share_url` link to view the Jewelry Design generation task status and results online!
+Please notify user the `share_url` link to view the Clothing Design generation task status and results online!
 
 
 ### 1.2 CLI Usage
