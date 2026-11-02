@@ -1,0 +1,10 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "craftsman-agent",
+  "version": "1.0.1",
+  "description": "AI Agent design-to-manufacturing platform for toy design, 3D generation, image generation, LEGO, Minecraft, and creative-to-physical-product workflows.",
+  "author": {
+    "name": "AI Agent A2Z"
+  },
+  "skills": "./skills"
+}

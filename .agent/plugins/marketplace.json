@@ -1,0 +1,16 @@
+{
+  "name": "aiagenta2z",
+  "interface": {
+    "displayName": "AI Agent A2Z",
+    "description": "AI Agent marketplace and creative agent ecosystem."
+  },
+  "plugins": [
+    {
+      "name": "craftsman-agent",
+      "source": {
+        "source": "local",
+        "path": "."
+      }
+    }
+  ]
+}

@@ -144,19 +144,53 @@ npx skills add https://github.com/ai-hub-admin/craftsman-agent --skill craftsman
 /craftsman-agent:marketplace-publisher   ### Publish Digital Assets(Image 3D) to Marketplace for Manufacturing
 ```
 
+### Codex Plugin
+```commandline
+# Add the AI Agent A2Z marketplace for Craftsman Agent Design Skills
+codex plugin marketplace add AI-Hub-Admin/Craftsman-Agent
+
+# Install the Craftsman Agent plugin
+codex plugin add craftsman-agent@aiagenta2z
+
+# Upgrade to a newer version
+codex plugin marketplace update aiagenta2z
+codex plugin update craftsman-agent@aiagenta2z
+
+# Usage
+# Open the plugin browser in Codex CLI
+/plugins
+
+# Example prompts after installing the plugin
+@craftsman-agent Generate an Tesla Car Wrap
+@craftsman-agent Design a 3D toy Multi-View Sheet
+@craftsman-agent Generate an AI PowerPoint presentation
+@craftsman-agent Generate a Perler Bead Pindou Pattern
+@craftsman-agent Publish digital assets to the Marketplace for manufacturing
+```
+
 ### MCP
 
 Usage in your AI Clients
+
 ```json
 {
     "mcpServers": {
         "craftsman-agent": {
-            "url": "https://craftsman-agent.aiagenta2z.com/craftsman-agent/mcp"
+            "url": "https://craftsman-agent.aiagenta2z.com/mcp"
         }
     }
 }
 ```
 
+CLI
+```commandline
+# Add Craftsman Agent MCP to Codex
+codex mcp add craftsman-agent --url https://craftsman-agent.aiagenta2z.com/mcp
+codex mcp login craftsman-agent
+
+claude mcp add --transport http craftsman-agent https://craftsman-agent.aiagenta2z.com/mcp
+claude mcp login craftsman-agent
+```
 
 ### Agent URL Playground
 
